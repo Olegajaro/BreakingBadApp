@@ -9,5 +9,7 @@ struct Character: Decodable {
     let name: String?
     let img: String?
     let status: String?
-    let NickName: String?
+    let nickname: String?
 }
+
+
