@@ -21,7 +21,6 @@ class RandomViewController: UIViewController {
         super.viewDidLoad()
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
-        characterImage.layer.cornerRadius = 60
         
         fetchRandomCharacter()
     }
