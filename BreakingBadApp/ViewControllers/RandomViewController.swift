@@ -9,10 +9,14 @@ import UIKit
 
 class RandomViewController: UIViewController {
 
+    @IBOutlet var characterImage: UIImageView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var nicknameLabel: UILabel!
+    @IBOutlet var statusLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 

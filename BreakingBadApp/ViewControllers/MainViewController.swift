@@ -11,9 +11,14 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func randomCharacterButtonPressed() {
+        performSegue(withIdentifier: "showCharacter", sender: nil)
+    }
+    
+    @IBAction func allCharacterButtonPressed() {
+        performSegue(withIdentifier: "showAll", sender: nil)
+    }
 }
 

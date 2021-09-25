@@ -9,4 +9,8 @@ import UIKit
 
 class CharactersCell: UICollectionViewCell {
     
+    @IBOutlet var imageCharacter: UIImageView!
+    @IBOutlet var nameCharacter: UILabel!
+    
+    
 }
