@@ -9,7 +9,6 @@ import UIKit
 
 class CharactersViewController: UICollectionViewController {
     
-    private let networking = NetworkManager.shared
     private var characters: [Character] = []
     
     override func viewDidLoad() {
@@ -35,7 +34,7 @@ class CharactersViewController: UICollectionViewController {
         return cell
     }
     
-    func fetchCharacters() {
+    private func fetchCharacters() {
         guard let url = URL(string: Link.breakingBad.rawValue) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in

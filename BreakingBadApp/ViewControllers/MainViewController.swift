@@ -8,11 +8,6 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     @IBAction func randomCharacterButtonPressed() {
         performSegue(withIdentifier: "showCharacter", sender: nil)
     }
