@@ -9,18 +9,20 @@ import UIKit
 
 class CharactersViewController: UICollectionViewController {
     
+    private let networking = NetworkManager.shared
     private var characters: [Character] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         fetchCharacters()
     }
-
+    
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         characters.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "cell",
@@ -29,10 +31,10 @@ class CharactersViewController: UICollectionViewController {
         
         let character = characters[indexPath.item]
         cell.configure(with: character)
-    
+        
         return cell
     }
-
+    
     func fetchCharacters() {
         guard let url = URL(string: Link.breakingBad.rawValue) else { return }
         
@@ -41,7 +43,7 @@ class CharactersViewController: UICollectionViewController {
                 print(error?.localizedDescription ?? "No error description")
                 return
             }
-
+            
             do {
                 self.characters = try JSONDecoder().decode([Character].self, from: data)
                 DispatchQueue.main.async {
