@@ -9,11 +9,9 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBAction func randomCharacterButtonPressed() {
-        performSegue(withIdentifier: "showCharacter", sender: nil)
     }
     
     @IBAction func allCharacterButtonPressed() {
-        performSegue(withIdentifier: "showAll", sender: nil)
     }
 }
 

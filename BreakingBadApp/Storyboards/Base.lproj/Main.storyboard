@@ -42,6 +42,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="randomCharacterButtonPressed" destination="QC2-Y0-gkx" eventType="touchUpInside" id="Fye-om-OjP"/>
+                                            <segue destination="o86-wR-sU0" kind="show" id="td3-6d-1Eg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfN-LD-Mfv">
@@ -66,6 +67,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="allCharacterButtonPressed" destination="QC2-Y0-gkx" eventType="touchUpInside" id="QcR-a1-Xie"/>
+                                            <segue destination="lxl-Md-klz" kind="show" id="uwS-MP-ubm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -92,10 +94,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dfS-ic-x2L"/>
-                    <connections>
-                        <segue destination="o86-wR-sU0" kind="show" identifier="showCharacter" id="uEl-hq-2yF"/>
-                        <segue destination="lxl-Md-klz" kind="show" identifier="showAll" id="vLb-Gl-192"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loV-5B-Gnk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
