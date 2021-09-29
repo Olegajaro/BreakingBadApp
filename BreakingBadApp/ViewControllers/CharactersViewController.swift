@@ -10,6 +10,7 @@ import UIKit
 class CharactersViewController: UICollectionViewController {
     
     private var characters: [Character] = []
+    private let networking = NetworkManager.shared
     private var spinnerView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
@@ -38,7 +39,7 @@ class CharactersViewController: UICollectionViewController {
     
     // MARK: - Private Methods
     private func fetchCharacters() {
-        NetworkManager.shared.fetchCharacters(from: Link.breakingBad.rawValue) { result in
+        networking.fetchCharactersWithAlamofire(from: Link.breakingBad.rawValue) { result in
             switch result {
             case .success(let characters):
                 self.characters = characters

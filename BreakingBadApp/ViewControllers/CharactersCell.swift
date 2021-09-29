@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CharactersCell: UICollectionViewCell {
     
@@ -15,7 +16,11 @@ class CharactersCell: UICollectionViewCell {
     func configure(with character: Character) {
         nameCharacter.text = character.name
         
-        NetworkManager.shared.fetchImage(from: character.img) { result in
+        getImage(url: character.img ?? "")
+    }
+    
+    private func getImage(url: String) {
+        NetworkManager.shared.fetchImageWithAlamofire(from: url) { result in
             switch result {
             case .success(let data):
                 self.imageCharacter.image = UIImage(data: data)

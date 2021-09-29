@@ -11,15 +11,15 @@ struct Character: Decodable {
     let status: String?
     let nickname: String?
     
-    init(charactersData: [String: Any]) {
-        name = charactersData["name"] as? String
-        img = charactersData["img"] as? String
-        status = charactersData["status"] as? String
-        nickname = charactersData["nickname"] as? String
+    init(characterData: [String: Any]) {
+        name = characterData["name"] as? String
+        img = characterData["img"] as? String
+        status = characterData["status"] as? String
+        nickname = characterData["nickname"] as? String
     }
     
     static func getCharacters(from value: Any) -> [Character] {
         guard let charactersData = value as? [[String:Any]] else { return [] }
-        return charactersData.compactMap { Character(charactersData: $0)}
+        return charactersData.compactMap { Character(characterData: $0)}
     }
 }

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Alamofire
+
 
 enum Link: String {
    case breakingBad = "https://www.breakingbadapi.com/api/characters?l"
@@ -21,46 +23,40 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    
-    func fetchCharacters(from url: String?, completion: @escaping(Result<[Character], NetworkError>) -> Void) {
-        guard let url = URL(string: url ?? "") else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do{
-                let characters = try JSONDecoder().decode([Character].self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(characters))
+    func fetchCharactersWithAlamofire(from url: String, completion: @escaping(Result<[Character], NetworkError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseJSON { dataResponse in
+                switch dataResponse.result {
+                case .success(let value):
+                    let characters = Character.getCharacters(from: value)
+                    DispatchQueue.main.async {
+                        completion(.success(characters))
+                    }
+                case .failure:
+                    completion(.failure(.decodingError))
                 }
-            } catch {
-                completion(.failure(.decodingError))
             }
-        }.resume()
     }
     
-    func fetchImage(from url: String?, completion: @escaping(Result<Data, NetworkError>) -> Void) {
-        guard let url = URL(string: url ?? "") else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: url) else {
-                completion(.failure(.noData))
-                return
+    func fetchImageWithAlamofire(from url: String, completion: @escaping(Result<Data,NetworkError>) -> Void) {
+        AF.download(url)
+            .responseData { dataResponse in
+                switch dataResponse.result {
+                case .success:
+                    DispatchQueue.global().async {
+                        guard let imageData = dataResponse.value else {
+                            completion(.failure(.noData))
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            completion(.success(imageData))
+                        }
+                    }
+                case .failure:
+                    completion(.failure(.decodingError))
+                }
             }
-            DispatchQueue.main.async {
-                completion(.success(imageData))
-            }
-        }
     }
     
     private init() {}
