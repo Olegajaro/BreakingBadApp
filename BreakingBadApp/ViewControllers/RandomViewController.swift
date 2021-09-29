@@ -22,15 +22,7 @@ class RandomViewController: UIViewController {
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         
-        networking.getCharacters(from: Link.breakingBad.rawValue) { result in
-            switch result {
-            case .success(let characters):
-                let character = characters.randomElement()
-                self.configure(with: character)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        fetchRandomCharacter()
     }
     
     private func configure(with character: Character?) {
@@ -45,6 +37,18 @@ class RandomViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
             case .failure(let error):
                 print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func fetchRandomCharacter() {
+        networking.fetchCharacters(from: Link.breakingBad.rawValue) { result in
+            switch result {
+            case .success(let characters):
+                let character = characters.randomElement()
+                self.configure(with: character)
+            case .failure(let error):
+                print(error)
             }
         }
     }

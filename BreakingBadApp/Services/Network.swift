@@ -21,7 +21,8 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    func getCharacters(from url: String?, completion: @escaping(Result<[Character], NetworkError>) -> Void) {
+    
+    func fetchCharacters(from url: String?, completion: @escaping(Result<[Character], NetworkError>) -> Void) {
         guard let url = URL(string: url ?? "") else {
             completion(.failure(.invalidURL))
             return

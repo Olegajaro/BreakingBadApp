@@ -38,7 +38,7 @@ class CharactersViewController: UICollectionViewController {
     
     // MARK: - Private Methods
     private func fetchCharacters() {
-        NetworkManager.shared.getCharacters(from: Link.breakingBad.rawValue) { result in
+        NetworkManager.shared.fetchCharacters(from: Link.breakingBad.rawValue) { result in
             switch result {
             case .success(let characters):
                 self.characters = characters
