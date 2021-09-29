@@ -15,11 +15,12 @@ class CharactersCell: UICollectionViewCell {
     func configure(with character: Character) {
         nameCharacter.text = character.name
         
-        DispatchQueue.global().async {
-            guard let url = URL(string: character.img ?? "") else { return }
-            guard let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                self.imageCharacter.image = UIImage(data: imageData)
+        NetworkManager.shared.fetchImage(from: character.img) { result in
+            switch result {
+            case .success(let data):
+                self.imageCharacter.image = UIImage(data: data)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

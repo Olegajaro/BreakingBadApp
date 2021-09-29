@@ -10,10 +10,12 @@ import UIKit
 class CharactersViewController: UICollectionViewController {
     
     private var characters: [Character] = []
+    private var spinnerView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        spinnerView = showSpinner(in: collectionView)
         fetchCharacters()
     }
     
@@ -34,23 +36,29 @@ class CharactersViewController: UICollectionViewController {
         return cell
     }
     
+    // MARK: - Private Methods
     private func fetchCharacters() {
-        guard let url = URL(string: Link.breakingBad.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                self.characters = try JSONDecoder().decode([Character].self, from: data)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            } catch let error {
+        NetworkManager.shared.getCharacters(from: Link.breakingBad.rawValue) { result in
+            switch result {
+            case .success(let characters):
+                self.characters = characters
+                self.spinnerView?.stopAnimating()
+                self.collectionView.reloadData()
+            case .failure(let error):
                 print(error.localizedDescription)
             }
-        }.resume()
+        }
+    }
+    
+    private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        activityIndicator.startAnimating()
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        
+        view.addSubview(activityIndicator)
+        
+        return activityIndicator
     }
 }

@@ -22,23 +22,29 @@ class RandomViewController: UIViewController {
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         
-        networking.getCharacters { (characters, _) -> () in
-            guard let character = characters.randomElement() else { return }
-            self.configure(with: character)
-            self.activityIndicator.stopAnimating()
+        networking.getCharacters(from: Link.breakingBad.rawValue) { result in
+            switch result {
+            case .success(let characters):
+                let character = characters.randomElement()
+                self.configure(with: character)
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
-    func configure(with character: Character?) {
+    private func configure(with character: Character?) {
         nameLabel.text = "Name: \(character?.name ?? "")"
         nicknameLabel.text = "Nickname: \(character?.nickname ?? "")"
         statusLabel.text = "Status: \(character?.status ?? "")"
         
-        DispatchQueue.global().async {
-            guard let url = URL(string: character?.img ?? "") else { return }
-            guard let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                self.characterImage.image = UIImage(data: imageData)
+        networking.fetchImage(from: character?.img) { result in
+            switch result {
+            case .success(let data):
+                self.characterImage.image = UIImage(data: data)
+                self.activityIndicator.stopAnimating()
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
