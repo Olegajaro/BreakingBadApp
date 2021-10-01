@@ -19,6 +19,7 @@
 		1049E2BF26FF1CEB0047061D /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1049E2BE26FF1CEB0047061D /* Character.swift */; };
 		1049E2C126FF20210047061D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1049E2C026FF20210047061D /* Network.swift */; };
 		1049E2C526FF20F10047061D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1049E2C426FF20F10047061D /* .gitignore */; };
+		1088B9002707611900561130 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1088B8FF2707611900561130 /* CharacterImageView.swift */; };
 		55A3390DB29AC405018AB8E5 /* Pods_BreakingBadApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85A29574CDE339C8D61C8670 /* Pods_BreakingBadApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		1049E2BE26FF1CEB0047061D /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		1049E2C026FF20210047061D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1049E2C426FF20F10047061D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		1088B8FF2707611900561130 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
 		1D31A6094ABD72FD5ED3CD3F /* Pods-BreakingBadApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakingBadApp.debug.xcconfig"; path = "Target Support Files/Pods-BreakingBadApp/Pods-BreakingBadApp.debug.xcconfig"; sourceTree = "<group>"; };
 		85A29574CDE339C8D61C8670 /* Pods_BreakingBadApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreakingBadApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE99A9CA28BDA661DCD3938F /* Pods-BreakingBadApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakingBadApp.release.xcconfig"; path = "Target Support Files/Pods-BreakingBadApp/Pods-BreakingBadApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				1049E2C626FF211B0047061D /* App */,
 				1049E2C826FF21400047061D /* ViewControllers */,
+				1088B8FE270760E100561130 /* Views */,
 				1049E2C726FF212B0047061D /* Storyboards */,
 				1049E2C926FF214E0047061D /* Resources */,
 				1049E2CA26FF21850047061D /* Models */,
@@ -111,7 +114,6 @@
 				1049E2A826FF0A7C0047061D /* MainViewController.swift */,
 				1049E2BA26FF1B090047061D /* RandomViewController.swift */,
 				1049E2BC26FF1B990047061D /* CharactersViewController.swift */,
-				1049E2B826FF1A580047061D /* CharactersCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -140,6 +142,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		1088B8FE270760E100561130 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1049E2B826FF1A580047061D /* CharactersCell.swift */,
+				1088B8FF2707611900561130 /* CharacterImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		84ECB8E2010D10A3D60A637E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +165,6 @@
 				1D31A6094ABD72FD5ED3CD3F /* Pods-BreakingBadApp.debug.xcconfig */,
 				BE99A9CA28BDA661DCD3938F /* Pods-BreakingBadApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -274,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1088B9002707611900561130 /* CharacterImageView.swift in Sources */,
 				1049E2BB26FF1B090047061D /* RandomViewController.swift in Sources */,
 				1049E2A926FF0A7C0047061D /* MainViewController.swift in Sources */,
 				1049E2C126FF20210047061D /* Network.swift in Sources */,

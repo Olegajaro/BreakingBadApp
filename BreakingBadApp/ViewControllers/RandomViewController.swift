@@ -9,7 +9,7 @@ import UIKit
 
 class RandomViewController: UIViewController {
 
-    @IBOutlet var characterImage: UIImageView!
+    @IBOutlet var characterImage: CharacterImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var nicknameLabel: UILabel!
@@ -27,6 +27,7 @@ class RandomViewController: UIViewController {
             case .success(let characters):
                 let character = characters.randomElement()
                 self.configure(with: character)
+                self.activityIndicator.stopAnimating()
             case .failure(let error):
                 print(error)
             }
@@ -38,14 +39,15 @@ class RandomViewController: UIViewController {
         nicknameLabel.text = "Nickname: \(character?.nickname ?? "")"
         statusLabel.text = "Status: \(character?.status ?? "")"
         
-        networking.fetchImage(from: character?.img) { result in
-            switch result {
-            case .success(let data):
-                self.characterImage.image = UIImage(data: data)
-                self.activityIndicator.stopAnimating()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        characterImage.getImage(from: character?.img ?? "")
+//        networking.fetchImage(from: character?.img) { result in
+//            switch result {
+//            case .success(let data):
+//                self.characterImage.image = UIImage(data: data)
+//                self.activityIndicator.stopAnimating()
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
     }
 }

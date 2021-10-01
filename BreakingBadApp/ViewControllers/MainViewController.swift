@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     @IBAction func randomCharacterButtonPressed() {
     }
-    
+
     @IBAction func allCharacterButtonPressed() {
     }
 }

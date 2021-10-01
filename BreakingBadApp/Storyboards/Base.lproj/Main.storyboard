@@ -121,24 +121,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="380"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K5Q-Es-o1X">
-                                            <rect key="frame" x="20" y="30" width="280" height="320"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JM-3z-UVk">
-                                            <rect key="frame" x="132" y="353" width="56" height="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6JM-3z-UVk">
+                                            <rect key="frame" x="20" y="353.5" width="280" height="23.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="280" id="HOY-nE-Qyc"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K5Q-Es-o1X" customClass="CharacterImageView" customModule="BreakingBadApp" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="25" width="280" height="320.5"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="6JM-3z-UVk" firstAttribute="top" secondItem="K5Q-Es-o1X" secondAttribute="bottom" constant="3" id="FLF-BR-N8z"/>
                                         <constraint firstItem="K5Q-Es-o1X" firstAttribute="leading" secondItem="TAv-06-ohE" secondAttribute="leading" constant="20" id="FhK-N3-g5x"/>
+                                        <constraint firstItem="K5Q-Es-o1X" firstAttribute="top" secondItem="TAv-06-ohE" secondAttribute="top" constant="25" id="K7j-z2-pDz"/>
                                         <constraint firstItem="6JM-3z-UVk" firstAttribute="centerX" secondItem="K5Q-Es-o1X" secondAttribute="centerX" id="KGh-ps-tgI"/>
                                         <constraint firstItem="6JM-3z-UVk" firstAttribute="centerX" secondItem="TAv-06-ohE" secondAttribute="centerX" id="SJC-br-39o"/>
-                                        <constraint firstItem="K5Q-Es-o1X" firstAttribute="top" secondItem="TAv-06-ohE" secondAttribute="top" constant="30" id="WYw-ft-cKl"/>
+                                        <constraint firstItem="6JM-3z-UVk" firstAttribute="top" secondItem="K5Q-Es-o1X" secondAttribute="bottom" constant="8" symbolic="YES" id="gvS-jh-gfO"/>
                                         <constraint firstAttribute="bottom" secondItem="6JM-3z-UVk" secondAttribute="bottom" constant="3" id="hsn-Fa-uPr"/>
-                                        <constraint firstItem="6JM-3z-UVk" firstAttribute="top" secondItem="K5Q-Es-o1X" secondAttribute="bottom" constant="3" id="jSu-nN-BIq"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemBrownColor"/>
@@ -172,7 +174,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LnH-G7-ubd">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LnH-G7-ubd" customClass="CharacterImageView" customModule="BreakingBadApp" customModuleProvider="target">
                                 <rect key="frame" x="40" y="88" width="334" height="484"/>
                                 <color key="backgroundColor" red="0.38366082702020199" green="0.37494396794263213" blue="0.1451059254040003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <userDefinedRuntimeAttributes>
@@ -204,19 +206,25 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rlC-MO-SYE">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="J7d-Em-Mta">
+                                <rect key="frame" x="169.5" y="389" width="75" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="EHY-5e-YSb"/>
+                                    <constraint firstAttribute="width" constant="75" id="Ppd-mz-iez"/>
+                                </constraints>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YeP-ek-OfP"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <constraints>
+                            <constraint firstItem="YeP-ek-OfP" firstAttribute="trailing" secondItem="J7d-Em-Mta" secondAttribute="trailing" constant="169.5" id="1Zv-gl-mwR"/>
                             <constraint firstItem="YeP-ek-OfP" firstAttribute="trailing" secondItem="MA5-4g-5Hn" secondAttribute="trailing" constant="20" id="3gU-h0-6dr"/>
                             <constraint firstItem="LnH-G7-ubd" firstAttribute="trailing" secondItem="YeP-ek-OfP" secondAttribute="trailing" constant="-40" id="BTW-3k-GvE"/>
-                            <constraint firstItem="rlC-MO-SYE" firstAttribute="centerX" secondItem="HIe-R8-IWE" secondAttribute="centerX" id="W8i-ht-xMF"/>
-                            <constraint firstItem="rlC-MO-SYE" firstAttribute="centerY" secondItem="HIe-R8-IWE" secondAttribute="centerY" id="aIa-hh-VUq"/>
+                            <constraint firstItem="J7d-Em-Mta" firstAttribute="top" secondItem="YeP-ek-OfP" secondAttribute="top" constant="301" id="QSK-hg-GlQ"/>
+                            <constraint firstItem="J7d-Em-Mta" firstAttribute="leading" secondItem="YeP-ek-OfP" secondAttribute="leading" constant="169.5" id="S47-kB-yvJ"/>
                             <constraint firstItem="LnH-G7-ubd" firstAttribute="leading" secondItem="YeP-ek-OfP" secondAttribute="leading" constant="40" id="c0U-a4-LQ0"/>
+                            <constraint firstItem="J7d-Em-Mta" firstAttribute="centerX" secondItem="HIe-R8-IWE" secondAttribute="centerX" id="dh9-AS-cK6"/>
                             <constraint firstItem="YeP-ek-OfP" firstAttribute="bottom" secondItem="LnH-G7-ubd" secondAttribute="bottom" constant="290" id="eWK-m6-QA2"/>
                             <constraint firstItem="MA5-4g-5Hn" firstAttribute="leading" secondItem="YeP-ek-OfP" secondAttribute="leading" constant="20" id="hWb-Eq-ZSY"/>
                             <constraint firstItem="YeP-ek-OfP" firstAttribute="bottom" secondItem="MA5-4g-5Hn" secondAttribute="bottom" constant="40" id="knr-bd-4kA"/>
@@ -225,7 +233,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dei-u3-FK9"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="rlC-MO-SYE" id="2kv-l1-zZU"/>
+                        <outlet property="activityIndicator" destination="J7d-Em-Mta" id="QLu-kM-c7c"/>
                         <outlet property="characterImage" destination="LnH-G7-ubd" id="Q9e-GK-oTd"/>
                         <outlet property="nameLabel" destination="ird-DM-fGS" id="1ZE-ll-8Wl"/>
                         <outlet property="nicknameLabel" destination="swI-NA-PXi" id="KJ2-1E-IqI"/>

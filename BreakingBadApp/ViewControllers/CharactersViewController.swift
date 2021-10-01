@@ -56,9 +56,9 @@ class CharactersViewController: UICollectionViewController {
         activityIndicator.startAnimating()
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
-        
+
         view.addSubview(activityIndicator)
-        
+
         return activityIndicator
     }
 }
