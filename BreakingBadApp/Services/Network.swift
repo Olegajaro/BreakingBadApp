@@ -10,7 +10,7 @@ import Alamofire
 
 
 enum Link: String {
-   case breakingBad = "https://www.breakingbadapi.com/api/characters?l"
+    case breakingBad = "https://www.breakingbadapi.com/api/characters?l"
 }
 
 enum NetworkError: Error {
@@ -30,9 +30,7 @@ class NetworkManager {
                 switch dataResponse.result {
                 case .success(let value):
                     let characters = Character.getCharacters(from: value)
-                    DispatchQueue.main.async {
-                        completion(.success(characters))
-                    }
+                    completion(.success(characters))
                 case .failure:
                     completion(.failure(.decodingError))
                 }
@@ -40,19 +38,12 @@ class NetworkManager {
     }
     
     func fetchImageWithAlamofire(from url: String, completion: @escaping(Result<Data,NetworkError>) -> Void) {
-        AF.download(url)
-            .responseData { dataResponse in
-                switch dataResponse.result {
-                case .success:
-                    DispatchQueue.global().async {
-                        guard let imageData = dataResponse.value else {
-                            completion(.failure(.noData))
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            completion(.success(imageData))
-                        }
-                    }
+        AF.request(url)
+            .validate()
+            .responseData { response in
+                switch response.result {
+                case .success (let data):
+                    completion(.success(data))
                 case .failure:
                     completion(.failure(.decodingError))
                 }

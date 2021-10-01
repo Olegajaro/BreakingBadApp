@@ -37,7 +37,7 @@ class RandomViewController: UIViewController {
                 self.statusLabel.text = "Status: \(self.randomCharacter.status ?? "")"
                 self.getImage(url: self.randomCharacter.img ?? "")
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }
